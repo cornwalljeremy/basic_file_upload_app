@@ -72,6 +72,9 @@ export async function uploadFile(
 ) {
   try {
     const file = formData.get("file") as File;
+    // CATCH THE FOLDER NAME FROM THE FORM DATA
+    const folder = formData.get("folder") as string || "uploads"; 
+    
     if (!file) throw new Error("No file provided");
 
     let fileName = file.name;
@@ -86,15 +89,17 @@ export async function uploadFile(
       fileName = `${base}_${Date.now()}${ext}`;
     }
 
-    // 2. Double check for duplicates and add (1), (2) if needed
+    // 2. Double check for duplicates within THAT FOLDER
     let finalFileName = fileName;
     let fileExists = true;
     let counter = 1;
 
     while (fileExists) {
-      const exists = await checkFileExists(finalFileName);
+      // We check existence for the full path: folder/filename
+      const fullPath = `${folder}/${finalFileName}`;
+      const exists = await checkFileExists(fullPath); 
+      
       if (exists && !manualRename) {
-        // Only increment if we aren't overwriting
         const lastDot = fileName.lastIndexOf(".");
         const base = lastDot !== -1 ? fileName.substring(0, lastDot) : fileName;
         const ext = lastDot !== -1 ? fileName.substring(lastDot) : "";
@@ -105,10 +110,13 @@ export async function uploadFile(
       }
     }
 
+    // 3. Construct the final Key with the folder prefix
+    const finalKey = `${folder}/${finalFileName}`;
+
     await s3Client.send(
       new PutObjectCommand({
         Bucket: process.env.AWS_BUCKET_NAME!,
-        Key: finalFileName,
+        Key: finalKey, // Use the path with the folder
         Body: buffer,
         ContentType: file.type,
       })
@@ -173,3 +181,4 @@ export async function getDownloadUrl(key: string) {
   const url = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
   return url;
 }
+
