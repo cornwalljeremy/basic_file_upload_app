@@ -1,181 +1,123 @@
-"use client";
-import { useRef, useState, useEffect, useCallback } from "react";
-// Added renameS3File to the imports
-// Change deleteS3File to deleteFile
-import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+'use client';
 
-interface S3File {
-  key: string;
-  size: number;
-}
+import { useState, useRef, useEffect } from 'react';
+import { checkFileExists, uploadFile, getS3Files } from './actions';
 
-export default function Home() {
-  const fileInputRef = useRef<HTMLInputElement>(null);
+export default function FileUploadPage() {
   const [file, setFile] = useState<File | null>(null);
-  const [files, setFiles] = useState<S3File[]>([]);
-  const [status, setStatus] = useState("");
-  const [uploading, setUploading] = useState(false);
+  const [files, setFiles] = useState<any[]>([]); // State for the file list
+  const [isUploading, setIsUploading] = useState(false);
+  const [showConflictModal, setShowConflictModal] = useState(false);
+  
+  // 1. Create the Ref
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // 1. PURE DATA FUNCTION
-  const loadFileData = useCallback(async () => {
-    try {
-      const data = await getS3Files();
-      return (data || []).map((f) => ({
-        key: (f as { key: string }).key || "unknown",
-        size: (f as { size: number }).size || 0,
-      }));
-    } catch (error) {
-      console.error("Data loading error:", error);
-      return [];
-    }
-  }, []);
-
-  // 2. THE EFFECT
-  useEffect(() => {
-    let isMounted = true;
-    loadFileData().then((formattedFiles) => {
-      if (isMounted) {
-        setFiles(formattedFiles);
-      }
-    });
-    return () => { isMounted = false; };
-  }, [loadFileData]);
-
-  // 3. REFRESH HELPER
-  const refreshList = async () => {
-    const data = await loadFileData();
+  // 2. Load files on mount
+  const fetchFiles = async () => {
+    const data = await getS3Files();
     setFiles(data);
   };
 
-  async function uploadFile() {
-    if (!file) return;
-    setUploading(true);
-    setStatus("Uploading...");
-    
-    const formData = new FormData();
-    formData.append("file", file);
+  useEffect(() => {
+    fetchFiles();
+  }, []);
 
-    const res = await fetch("/api/upload", {
-      method: "POST",
-      body: formData,
-    });
+  const handleUploadClick = async () => {
+    if (!file) return alert("Please select a file first");
 
-    setUploading(false);
-    if (res.ok) {
-      setStatus("Upload successful ✅");
-      setFile(null);
-      await refreshList();
-    } else {
-      setStatus("Upload failed ❌");
+    setIsUploading(true);
+    try {
+      const exists = await checkFileExists(file.name);
+      if (exists) {
+        setShowConflictModal(true);
+        setIsUploading(false);
+      } else {
+        await executeUpload(false);
+      }
+    } catch (err) {
+      console.error(err);
+      setIsUploading(false);
     }
-  }
+  };
 
-  function openFilePicker() {
-    fileInputRef.current?.click();
-  }
+  const executeUpload = async (shouldRename: boolean) => {
+    setIsUploading(true);
+    setShowConflictModal(false);
+
+    const formData = new FormData();
+    formData.append("file", file!);
+
+    try {
+      await uploadFile(formData, shouldRename);
+      
+      // --- THE FIXES ---
+      setFile(null); // Reset React state
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""; // Reset HTML input visually
+      }
+      
+      await fetchFiles(); // Refresh the list after upload
+      alert("Upload successful!");
+    } catch (err) {
+      alert("Upload failed");
+    } finally {
+      setIsUploading(false);
+    }
+  };
 
   return (
-    <main style={{ padding: 40, maxWidth: 800, fontFamily: "sans-serif" }}>
-      <h1>S3 Storage Manager</h1>
-
-      <div style={{ marginBottom: 20 }}>
-        <input
-          ref={fileInputRef}
-          type="file"
-          hidden
+    <main className="p-8 max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold mb-6">S3 File Manager</h1>
+      
+      <div className="flex gap-4 mb-8 items-center">
+        <input 
+          type="file" 
+          ref={fileInputRef} // Attach the ref here
           onChange={(e) => setFile(e.target.files?.[0] || null)}
+          className="border p-2 rounded bg-white dark:bg-gray-800"
         />
-        <button onClick={openFilePicker}>Select File</button>
-        <button
-          onClick={uploadFile}
-          disabled={!file || uploading}
-          style={{ marginLeft: 10 }}
+        <button 
+          onClick={handleUploadClick}
+          disabled={isUploading}
+          className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded disabled:bg-gray-400 transition"
         >
-          {uploading ? "Uploading..." : "Upload to S3"}
+          {isUploading ? "Uploading..." : "Upload to S3"}
         </button>
-        {file && <span style={{ marginLeft: 15 }}>Selected: {file.name}</span>}
       </div>
 
-      <p>{status}</p>
-      <hr />
-
-      <section style={{ marginTop: 30 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h3>Your Bucket Files</h3>
-          <button onClick={refreshList}>Refresh List</button>
-        </div>
-        
-        <ul style={{ marginTop: 20, listStyle: "none", padding: 0 }}>
-          {files.length === 0 ? (
-            <li>No files found.</li>
-          ) : (
-            files.map((f) => (
-              <li key={f.key} style={{ padding: "12px 0", borderBottom: "1px solid #eee", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ flex: 1, marginRight: "20px" }}>
-                  <strong>{f.key}</strong> — {(f.size / 1024).toFixed(2)} KB
-                </span>
-                
-                <div style={{ display: "flex", gap: "10px" }}>
-                  <button 
-                    onClick={async () => {
-                      const url = await getDownloadUrl(f.key);
-                      window.open(url, "_blank");
-                    }}
-                    style={{ padding: "4px 8px", cursor: "pointer" }}
-                  >
-                    Download
-                  </button>
-
-                  {/* RENAME BUTTON */}
-                  <button 
-                    onClick={async () => {
-                      const newName = prompt("Enter new filename:", f.key);
-                      if (newName && newName !== f.key) {
-                        setStatus("Renaming...");
-                        const result = await renameS3File(f.key, newName);
-                        if (result.success) {
-                          setStatus("Renamed successfully ✅");
-                          await refreshList();
-                        } else {
-                          setStatus("Rename failed ❌");
-                        }
-                      }
-                    }}
-                    style={{ padding: "4px 8px", cursor: "pointer", backgroundColor: "#f0f0f0", border: "1px solid #ccc", borderRadius: "4px" }}
-                  >
-                    Rename
-                  </button>
-
-                  <button 
-                    onClick={async () => {
-                      if (confirm(`Are you sure you want to delete ${f.key}?`)) {
-                        setStatus("Deleting...");
-                        const result = await deleteS3File(f.key);
-                        if (result.success) {
-                          setStatus("Deleted successfully ✅");
-                          await refreshList(); 
-                        } else {
-                          setStatus("Delete failed ❌");
-                        }
-                      }
-                    }}
-                    style={{ 
-                      padding: "4px 8px", 
-                      cursor: "pointer", 
-                      backgroundColor: "#ff4444", 
-                      color: "white", 
-                      border: "none", 
-                      borderRadius: "4px" 
-                    }}
-                  >
-                    Delete
-                  </button>
-                </div>
+      {/* --- FILE LIST --- */}
+      <div className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">Your Files</h2>
+        {files.length === 0 ? (
+          <p className="text-gray-500">No files found in bucket.</p>
+        ) : (
+          <ul className="divide-y border rounded-lg overflow-hidden">
+            {files.map((f) => (
+              <li key={f.key} className="p-4 flex justify-between items-center bg-white dark:bg-gray-900">
+                <span>{f.key}</span>
+                <span className="text-sm text-gray-400">{(f.size / 1024).toFixed(2)} KB</span>
               </li>
-            ))
-          )}
-        </ul>
-      </section>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {/* --- CONFLICT MODAL --- */}
+      {showConflictModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-2xl max-w-sm w-full text-center">
+            <h2 className="text-xl font-bold mb-2">File Already Exists</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <b>{file?.name}</b> is already in S3.
+            </p>
+            <div className="flex flex-col gap-2">
+              <button onClick={() => executeUpload(true)} className="bg-blue-600 text-white py-2 rounded font-medium">Keep Both (Rename)</button>
+              <button onClick={() => executeUpload(false)} className="bg-red-600 text-white py-2 rounded font-medium">Replace Existing</button>
+              <button onClick={() => setShowConflictModal(false)} className="text-gray-500 py-1 hover:underline">Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
