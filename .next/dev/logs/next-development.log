@@ -1,0 +1,888 @@
+[00:00:04.524] Server  LOG     ✓ Ready in 3.5s
+[00:00:07.542] Server  LOG     ○ Compiling / ...
+[00:00:12.084] Server  ERROR   ⨯ ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+
+
+./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+
+[00:00:14.734] Browser ERROR   uncaughtError: Error: ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+
+[00:00:14.863] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:00:14.863] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:00:14.967] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:00:14.967] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:01:58.394] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:01:58.394] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:03.176] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:03.176] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:05.242] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:05.242] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:10.497] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:10.497] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:12.954] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:12.954] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:12.954] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:12.954] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:57.910] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:57.910] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:00.225] Browser ERROR   ./app/actions.ts:126:3
+Parsing ecmascript source code failed
+  124 |     throw new Error("Failed to delete file");
+  125 |   }
+> 126 |   export async function renameS3File(oldKey: string, newKey: string) {
+      |   ^^^^^^
+  127 |   try {
+  128 |     const bucket = process.env.AWS_BUCKET_NAME!;
+  129 |
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./app/actions.ts [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/actions.ts [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:00.225] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:00.225] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:00.390] Browser ERROR   ./app/actions.ts:126:3
+Parsing ecmascript source code failed
+  124 |     throw new Error("Failed to delete file");
+  125 |   }
+> 126 |   export async function renameS3File(oldKey: string, newKey: string) {
+      |   ^^^^^^
+  127 |   try {
+  128 |     const bucket = process.env.AWS_BUCKET_NAME!;
+  129 |
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./app/actions.ts [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/actions.ts [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:00.390] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:00.390] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:01.694] Browser ERROR   ./app/actions.ts:127:3
+Parsing ecmascript source code failed
+  125 |   }
+  126 |   
+> 127 |   export async function renameS3File(oldKey: string, newKey: string) {
+      |   ^^^^^^
+  128 |   try {
+  129 |     const bucket = process.env.AWS_BUCKET_NAME!;
+  130 |
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./app/actions.ts [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/actions.ts [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:01.694] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:01.694] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:04.383] Browser ERROR   ./app/actions.ts:139:2
+Parsing ecmascript source code failed
+  137 |       })
+  138 |     );
+> 139 | }
+      |  ^
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./app/actions.ts [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/actions.ts [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:04.383] Browser ERROR   ./app/actions.ts:139:2
+Parsing ecmascript source code failed
+  137 |       })
+  138 |     );
+> 139 | }
+      |  ^
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./app/actions.ts [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/actions.ts [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:04.383] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:04.383] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:11.828] Browser ERROR   ./app/actions.ts:138:7
+Parsing ecmascript source code failed
+  136 |         Key: newKey,
+  137 |       })
+> 138 |     );
+      |       ^
+  139 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./app/actions.ts [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/actions.ts [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:11.828] Browser ERROR   ./app/actions.ts:138:7
+Parsing ecmascript source code failed
+  136 |         Key: newKey,
+  137 |       })
+> 138 |     );
+      |       ^
+  139 |
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./app/actions.ts [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/actions.ts [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:11.828] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:11.828] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:05:18.510] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-client] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:05:18.510] Browser ERROR   ./app/page.tsx:5:1
+Export renameS3File doesn't exist in target module
+  3 | // Added renameS3File to the imports
+  4 | // Change deleteS3File to deleteFile
+> 5 | import { getS3Files, uploadFile, deleteFile, renameS3File } from "./actions";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface S3File {
+  8 |   key: string;
+
+The export renameS3File was not found in module [project]/app/actions.ts [app-ssr] (ecmascript).
+Did you mean to import deleteFile?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:05:29.429] Server  LOG     ✓ Compiled in 36ms
+[00:05:32.486] Server  LOG     DEBUG - Region: "us-east-2"
+[00:05:32.486] Server  LOG     DEBUG - Bucket: "basic-file-upload-54321"
+[00:05:57.580] Server  LOG     DEBUG - Region: "us-east-2"
+[00:05:57.580] Server  LOG     DEBUG - Bucket: "basic-file-upload-54321"
+[00:06:06.278] Server  LOG     DEBUG - Region: "us-east-2"
+[00:06:06.278] Server  LOG     DEBUG - Bucket: "basic-file-upload-54321"
+[00:06:17.261] Server  LOG     DEBUG - Region: "us-east-2"
+[00:06:17.261] Server  LOG     DEBUG - Bucket: "basic-file-upload-54321"
