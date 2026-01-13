@@ -1,14 +1,16 @@
 "use server";
 
-import { 
-  S3Client, 
-  ListObjectsV2Command, 
-  PutObjectCommand, 
+import {
+  S3Client,
+  ListObjectsV2Command,
+  PutObjectCommand,
   HeadObjectCommand,
   DeleteObjectCommand,
-  CopyObjectCommand, 
+  CopyObjectCommand,
+  GetObjectCommand,
 } from "@aws-sdk/client-s3";
 import { revalidatePath } from "next/cache";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 // Initialize the S3 Client
 const s3Client = new S3Client({
@@ -24,13 +26,16 @@ const s3Client = new S3Client({
  */
 export async function checkFileExists(fileName: string) {
   try {
-    await s3Client.send(new HeadObjectCommand({
-      Bucket: process.env.AWS_BUCKET_NAME!,
-      Key: fileName,
-    }));
-    return true; 
+    await s3Client.send(
+      new HeadObjectCommand({
+        Bucket: process.env.AWS_BUCKET_NAME!,
+        Key: fileName,
+      })
+    );
+    return true;
   } catch (error: any) {
-    if (error.name === 'NotFound' || error.$metadata?.httpStatusCode === 404) return false;
+    if (error.name === "NotFound" || error.$metadata?.httpStatusCode === 404)
+      return false;
     throw error;
   }
 }
@@ -45,11 +50,13 @@ export async function getS3Files() {
         Bucket: process.env.AWS_BUCKET_NAME!,
       })
     );
-    return Contents?.map((file) => ({
-      key: file.Key,
-      size: file.Size,
-      lastModified: file.LastModified,
-    })) || [];
+    return (
+      Contents?.map((file) => ({
+        key: file.Key,
+        size: file.Size,
+        lastModified: file.LastModified,
+      })) || []
+    );
   } catch (error) {
     console.error("AWS List Error:", error);
     return [];
@@ -59,7 +66,10 @@ export async function getS3Files() {
 /**
  * Uploads a file with logic for manual rename OR automatic (n) incrementing
  */
-export async function uploadFile(formData: FormData, manualRename: boolean = false) {
+export async function uploadFile(
+  formData: FormData,
+  manualRename: boolean = false
+) {
   try {
     const file = formData.get("file") as File;
     if (!file) throw new Error("No file provided");
@@ -76,14 +86,15 @@ export async function uploadFile(formData: FormData, manualRename: boolean = fal
       fileName = `${base}_${Date.now()}${ext}`;
     }
 
-    // 2. Double check for duplicates and add (1), (2) if needed 
+    // 2. Double check for duplicates and add (1), (2) if needed
     let finalFileName = fileName;
     let fileExists = true;
     let counter = 1;
 
     while (fileExists) {
       const exists = await checkFileExists(finalFileName);
-      if (exists && !manualRename) { // Only increment if we aren't overwriting
+      if (exists && !manualRename) {
+        // Only increment if we aren't overwriting
         const lastDot = fileName.lastIndexOf(".");
         const base = lastDot !== -1 ? fileName.substring(0, lastDot) : fileName;
         const ext = lastDot !== -1 ? fileName.substring(lastDot) : "";
@@ -94,12 +105,14 @@ export async function uploadFile(formData: FormData, manualRename: boolean = fal
       }
     }
 
-    await s3Client.send(new PutObjectCommand({
-      Bucket: process.env.AWS_BUCKET_NAME!,
-      Key: finalFileName,
-      Body: buffer,
-      ContentType: file.type,
-    }));
+    await s3Client.send(
+      new PutObjectCommand({
+        Bucket: process.env.AWS_BUCKET_NAME!,
+        Key: finalFileName,
+        Body: buffer,
+        ContentType: file.type,
+      })
+    );
 
     revalidatePath("/");
     return { success: true, fileName: finalFileName };
@@ -114,29 +127,49 @@ export async function uploadFile(formData: FormData, manualRename: boolean = fal
  */
 export async function deleteFile(key: string) {
   try {
-    await s3Client.send(new DeleteObjectCommand({ Bucket: process.env.AWS_BUCKET_NAME!, Key: key }));
-    revalidatePath("/");
+    const command = new DeleteObjectCommand({
+      Bucket: process.env.AWS_BUCKET_NAME!,
+      Key: key,
+    });
+
+    await s3Client.send(command);
     return { success: true };
   } catch (error) {
-    throw new Error("Failed to delete");
+    console.error("Delete Error:", error);
+    throw new Error("Failed to delete file");
   }
 }
 
 /**
  * Renames a file (Copy + Delete)
  */
-export async function renameS3File(oldKey: string, newKey: string) {
+export async function renameS3File(oldKey: string, newKey: string): Promise<{ success: boolean; }> {
   try {
     const bucket = process.env.AWS_BUCKET_NAME!;
-    await s3Client.send(new CopyObjectCommand({
-      Bucket: bucket,
-      CopySource: `${bucket}/${oldKey}`,
-      Key: newKey,
-    }));
-    await s3Client.send(new DeleteObjectCommand({ Bucket: bucket, Key: oldKey }));
+    await s3Client.send(
+      new CopyObjectCommand({
+        Bucket: bucket,
+        CopySource: `${bucket}/${oldKey}`,
+        Key: newKey,
+      })
+    );
+    await s3Client.send(
+      new DeleteObjectCommand({ Bucket: bucket, Key: oldKey })
+    );
     revalidatePath("/");
     return { success: true };
   } catch (error) {
     throw new Error("Failed to rename");
   }
+}
+export async function getDownloadUrl(key: string) {
+  const command = new GetObjectCommand({
+    Bucket: process.env.AWS_BUCKET_NAME!,
+    Key: key,
+    // This line tells the browser: "Don't open this, download it as a file"
+    ResponseContentDisposition: `attachment; filename="${key}"`,
+  });
+
+  const url = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+  return url;
 }
