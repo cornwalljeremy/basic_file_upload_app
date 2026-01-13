@@ -73,8 +73,8 @@ export async function uploadFile(
   try {
     const file = formData.get("file") as File;
     // CATCH THE FOLDER NAME FROM THE FORM DATA
-    const folder = formData.get("folder") as string || "uploads"; 
-    
+    const folder = (formData.get("folder") as string) || "uploads";
+
     if (!file) throw new Error("No file provided");
 
     let fileName = file.name;
@@ -97,8 +97,8 @@ export async function uploadFile(
     while (fileExists) {
       // We check existence for the full path: folder/filename
       const fullPath = `${folder}/${finalFileName}`;
-      const exists = await checkFileExists(fullPath); 
-      
+      const exists = await checkFileExists(fullPath);
+
       if (exists && !manualRename) {
         const lastDot = fileName.lastIndexOf(".");
         const base = lastDot !== -1 ? fileName.substring(0, lastDot) : fileName;
@@ -151,7 +151,10 @@ export async function deleteFile(key: string) {
 /**
  * Renames a file (Copy + Delete)
  */
-export async function renameS3File(oldKey: string, newKey: string): Promise<{ success: boolean; }> {
+export async function renameS3File(
+  oldKey: string,
+  newKey: string
+): Promise<{ success: boolean }> {
   try {
     const bucket = process.env.AWS_BUCKET_NAME!;
     await s3Client.send(
@@ -181,4 +184,3 @@ export async function getDownloadUrl(key: string) {
   const url = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
   return url;
 }
-
